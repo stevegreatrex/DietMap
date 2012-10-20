@@ -34,3 +34,12 @@
 		});
 	}
 };
+
+ko.bindingHandlers.loadWizard = {
+	init: function (element, valueAccessor, a, viewModel) {
+		var value = ko.utils.unwrapObservable(valueAccessor());
+		$(element).click(function () {
+			viewModel.loadWizard(value);
+		});
+	}
+};

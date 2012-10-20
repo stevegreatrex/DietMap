@@ -34,12 +34,10 @@
                         <a href="#" data-nav-group="food">Dinner</a>
                            
                         <a href="#" data-nav-group="exercise" data-nav-target="add">&lt;</a>
-                        <a href="#" data-nav-group="exercise" data-bind="click: wizardVisible">Cardio</a>
+                        <a href="#" data-nav-group="exercise" data-bind="loadWizard: '@Url.Action("ExerciseWizard", "Home")'">Cardio</a>
                         <a href="#" data-nav-group="exercise">Strength</a>
                     </div>
-                    <div data-bind="visible: wizardVisible">
-                        <h1>Wizard</h1>
-                    </div>
+                    <div data-bind="html: wizardContent"></div>
                 </div>
             </td>
             <!-- /ko -->

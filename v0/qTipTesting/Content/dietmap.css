@@ -25,3 +25,9 @@
   width: 200px;
   max-height: 80%;
 }
+.wizard {
+  margin: 10px;
+  background: #d1ce8a;
+  padding: 10px;
+  display: block;
+}

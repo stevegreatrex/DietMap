@@ -12,8 +12,13 @@
 		var self = this;
 		this.day = ko.observable(day);
 		this.time = ko.observable(time);
+		this.wizardContent = ko.observable();
 
-		this.wizardVisible = ko.observable(false);
+		this.loadWizard = function (url) {
+			$.get(url).done(function (data) {
+				self.wizardContent(data);
+			});
+		};
 
 		TimeBase.apply(this);
 		this.title = ko.computed(function () {

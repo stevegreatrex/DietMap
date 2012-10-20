@@ -15,6 +15,12 @@ namespace DietMap.v0.Controllers
 			return View();
 		}
 
+
+		public ActionResult ExerciseWizard()
+		{
+			return PartialView("_ExerciseWizard");
+		}
+
 		public ActionResult About()
 		{
 			ViewBag.Message = "Your app description page.";
