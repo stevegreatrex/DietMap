@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<table class="planner">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Mon</th>
+            <th>Tues</th>
+            <th>Wed</th>
+            <th>Thurs</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: timeslotRows">
+        <tr class="timeslot-row">
+            <td data-bind="text: displayTime"></td>
+            <!-- ko foreach: timeslots -->
+            <td class="timeslot" data-bind="click: $root.select, tipOnClick: { content: '.timeslot-popup-content', title: title, onhide: $root.removeSelection }, css: { active: $root.selectedTimeslot() === $data }">
+                <div class="timeslot-popup-content">
+                    CONTENT!
+                </div>
+            </td>
+            <!-- /ko -->
+        </tr>
+    </tbody>
+</table>
+
+@section scripts {
+    @Scripts.Render("~/bundles/viewmodel")
+    <script>
+        $(function () {
+            var viewModel = new DietMap();
+            ko.applyBindings(viewModel);
+        });
+    </script>
+}

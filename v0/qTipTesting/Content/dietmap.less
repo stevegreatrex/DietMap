@@ -1,0 +1,35 @@
+﻿@timeslot-background: #fff;
+@timeslot-active-background: orange;
+
+.planner {
+	border-spacing: 2px;
+	border-collapse: separate;
+}
+
+.planner th {
+	text-align: center;
+}
+
+.timeslot {
+	height: 3em;
+	width: 14%;
+	border-spacing: 2px;
+	background: @timeslot-background;
+	cursor: pointer;
+}
+
+	.timeslot:hover {
+		background: (@timeslot-active-background *1.2);
+	}
+
+	.timeslot.active {
+		background: @timeslot-active-background;
+	}
+
+	.timeslot > .timeslot-popup-content {
+		display: none;
+	}
+
+.timeslot-row {
+
+}

@@ -1,0 +1,23 @@
+.planner {
+  border-spacing: 2px;
+  border-collapse: separate;
+}
+.planner th {
+  text-align: center;
+}
+.timeslot {
+  height: 3em;
+  width: 14%;
+  border-spacing: 2px;
+  background: #ffffff;
+  cursor: pointer;
+}
+.timeslot:hover {
+  background: #ffc600;
+}
+.timeslot.active {
+  background: #ffa500;
+}
+.timeslot > .timeslot-popup-content {
+  display: none;
+}
