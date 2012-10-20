@@ -12,6 +12,9 @@
 		var self = this;
 		this.day = ko.observable(day);
 		this.time = ko.observable(time);
+
+		this.wizardVisible = ko.observable(false);
+
 		TimeBase.apply(this);
 		this.title = ko.computed(function () {
 			return self.day() + " at " + self.displayTime();

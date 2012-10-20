@@ -24,6 +24,7 @@ namespace DietMap.v0
 			bundles.Add(new ScriptBundle("~/bundles/viewmodel").Include(
 						"~/Scripts/moment*",
 						"~/Scripts/knockout*",
+						"~/Scripts/utils*",
 						"~/Scripts/dietmap.js*"));
 
 			// Use the development version of Modernizr to develop with and learn from. Then, when you're

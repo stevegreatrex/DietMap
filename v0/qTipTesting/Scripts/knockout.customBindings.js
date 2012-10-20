@@ -27,6 +27,9 @@
 						value.onhide.call(this, viewModel);
 					}
 				}
+			},
+			style: {
+				classes: 'ui-tooltip-actions ui-tooltip-light ui-tooltip-shadow'
 			}
 		});
 	}

@@ -21,13 +21,35 @@
             <!-- ko foreach: timeslots -->
             <td class="timeslot" data-bind="click: $root.select, tipOnClick: { content: '.timeslot-popup-content', title: title, onhide: $root.removeSelection }, css: { active: $root.selectedTimeslot() === $data }">
                 <div class="timeslot-popup-content">
-                    CONTENT!
+                    <div data-bind="progressiveNav: true">
+                        <a href="#" data-nav-group="top" data-nav-target="add">Add</a>
+                           
+                        <a href="#" data-nav-group="add" data-nav-target="top">&lt;</a>
+                        <a href="#" data-nav-group="add" data-nav-target="food">Food</a>
+                        <a href="#" data-nav-group="add" data-nav-target="exercise">Exercise</a>
+                           
+                        <a href="#" data-nav-group="food" data-nav-target="add">&lt;</a>
+                        <a href="#" data-nav-group="food">Breakfast</a>
+                        <a href="#" data-nav-group="food">Lunch</a>
+                        <a href="#" data-nav-group="food">Dinner</a>
+                           
+                        <a href="#" data-nav-group="exercise" data-nav-target="add">&lt;</a>
+                        <a href="#" data-nav-group="exercise" data-bind="click: wizardVisible">Cardio</a>
+                        <a href="#" data-nav-group="exercise">Strength</a>
+                    </div>
+                    <div data-bind="visible: wizardVisible">
+                        <h1>Wizard</h1>
+                    </div>
                 </div>
             </td>
             <!-- /ko -->
         </tr>
     </tbody>
 </table>
+
+<script type="text/html" id="cardio-wizard">
+    <h1>CARDIO!!</h1>
+</script>
 
 @section scripts {
     @Scripts.Render("~/bundles/viewmodel")
