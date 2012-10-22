@@ -21,21 +21,24 @@
             <!-- ko foreach: timeslots -->
             <td class="timeslot" data-bind="click: $root.select, tipOnClick: { content: '.timeslot-popup-content', title: title, onhide: $root.removeSelection }, css: { active: $root.selectedTimeslot() === $data }">
                 <div class="timeslot-popup-content">
-                    <div data-bind="progressiveNav: true">
-                        <a href="#" data-nav-group="top" data-nav-target="add">Add</a>
+                    <div>
+                        <span class="empty-list-message">Nothing planned yet</span>
+                    </div>
+                    <div class="actions" data-bind="progressiveNav: true">
+                        <a href="#" data-nav-group="top" data-nav-target="add" class="nav-link add"></a>
                            
-                        <a href="#" data-nav-group="add" data-nav-target="top">&lt;</a>
-                        <a href="#" data-nav-group="add" data-nav-target="food">Food</a>
-                        <a href="#" data-nav-group="add" data-nav-target="exercise">Exercise</a>
+                        <a href="#" data-nav-group="add" data-nav-target="top" class="nav-link back"></a>
+                        <a href="#" data-nav-group="add" data-nav-target="food" class="nav-link food"></a>
+                        <a href="#" data-nav-group="add" data-nav-target="exercise" class="nav-link weight"></a>
                            
-                        <a href="#" data-nav-group="food" data-nav-target="add">&lt;</a>
-                        <a href="#" data-nav-group="food">Breakfast</a>
-                        <a href="#" data-nav-group="food">Lunch</a>
-                        <a href="#" data-nav-group="food">Dinner</a>
+                        <a href="#" data-nav-group="food" data-nav-target="add" class="nav-link back"></a>
+                        <a href="#" data-nav-group="food" class="nav-link text">Breakfast</a>
+                        <a href="#" data-nav-group="food" class="nav-link text">Lunch</a>
+                        <a href="#" data-nav-group="food" class="nav-link text">Dinner</a>
                            
-                        <a href="#" data-nav-group="exercise" data-nav-target="add">&lt;</a>
-                        <a href="#" data-nav-group="exercise" data-bind="loadWizard: '@Url.Action("ExerciseWizard", "Home")'">Cardio</a>
-                        <a href="#" data-nav-group="exercise">Strength</a>
+                        <a href="#" data-nav-group="exercise" data-nav-target="add" class="nav-link back"></a>
+                        <a href="#" data-nav-group="exercise"  class="nav-link text" data-bind="loadWizard: '@Url.Action("ExerciseWizard", "Home")'">Cardio</a>
+                        <a href="#" data-nav-group="exercise" class="nav-link text">Strength</a>
                     </div>
                     <div data-bind="html: wizardContent"></div>
                 </div>

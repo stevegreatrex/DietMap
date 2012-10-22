@@ -35,8 +35,9 @@
 }
 
 .ui-tooltip-actions {
-	width: 200px;
+	width: 300px;
 	max-height: 80%;
+	max-width: 300px;
 }
 
 .wizard {
@@ -44,4 +45,65 @@
 	background: #d1ce8a;
 	padding: 10px;
 	display: block;
+}
+
+.nav-link
+{
+	height: 32px;
+	font-size: 16px;
+	display: inline-block;
+	background: #ddd;
+	margin: 0 2px;
+	float: left;
+}
+	
+	.nav-link-image
+	{
+		width: 32px;
+		background-position: center;
+		-moz-background-size: 24px;
+		-o-background-size: 24px;
+		-webkit-background-size: 24px;
+		background-size: 24px;
+		background-repeat: no-repeat;
+	}
+
+	.nav-link.back {
+		.nav-link-image;
+		background-image: url('images/back.png');
+	}
+
+	.nav-link.add {
+		.nav-link-image;
+		background-image: url('images/plus.png');
+	}
+
+	.nav-link.food {
+		.nav-link-image;
+		background-image: url('images/knifefork.png');
+	}
+
+	.nav-link.weight {
+		.nav-link-image;
+		background-image: url('images/weight.png');
+	}
+
+	.nav-link.text{
+		color: #222;
+		text-decoration: none;
+		line-height: 32px;
+		padding: 0 10px;
+	}
+
+.timeslot-popup-content .actions {
+	height: 32px;
+}
+
+.empty-list-message {
+	font-style: italic;
+	color: #999;
+	text-align: center;
+	display: block;
+	padding: 10px;
+	font-size: 10pt;
 }
