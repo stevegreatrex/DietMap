@@ -1,5 +1,7 @@
-﻿ko.bindingHandlers.tipOnClick = {
+﻿/*global ko:false*/
+ko.bindingHandlers.tipOnClick = {
 	init: function (element, valueAccessor, allValueAccessor, viewModel) {
+		"use strict";
 		var $element = $(element),
 			value = ko.utils.unwrapObservable(valueAccessor()),
 			$content = $element.find(value.content);
@@ -13,11 +15,11 @@
 				}
 			},
 			position: {
-				my: 'center', at: 'center', of: $element,
+				my: "center", at: "center", of: $element,
 				viewport: $(window)
 			},
 			show: {
-				event: 'click',
+				event: "click",
 				solo: true
 			},
 			hide: false,
@@ -29,14 +31,15 @@
 				}
 			},
 			style: {
-				classes: 'ui-tooltip-actions ui-tooltip-light ui-tooltip-shadow'
+				classes: "ui-tooltip-actions ui-tooltip-light ui-tooltip-shadow"
 			}
 		});
 	}
 };
 
 ko.bindingHandlers.loadWizard = {
-	init: function (element, valueAccessor, a, viewModel) {
+	init: function (element, valueAccessor, allValueAccessor, viewModel) {
+		"use strict";
 		var value = ko.utils.unwrapObservable(valueAccessor());
 		$(element).click(function () {
 			viewModel.loadWizard(value);

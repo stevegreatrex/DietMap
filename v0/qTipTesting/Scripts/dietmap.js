@@ -1,10 +1,12 @@
-﻿var DietMap = (function ($, ko, moment, undefined) {
+﻿/*global ko:false, moment:false*/
+
+var DietMap = (function ($, ko, moment, undefined) {
 	"use strict";
 
 	var TimeBase = function () {
 		var self = this;
 		this.displayTime = ko.computed(function () {
-			return moment().hours(self.time()).format('HH:00')
+			return moment().hours(self.time()).format("HH:00");
 		}, this);
 	};
 

@@ -32,13 +32,13 @@
                         <a href="#" data-nav-group="add" data-nav-target="exercise" class="nav-link weight"></a>
                            
                         <a href="#" data-nav-group="food" data-nav-target="add" class="nav-link back"></a>
-                        <a href="#" data-nav-group="food" class="nav-link text">Breakfast</a>
-                        <a href="#" data-nav-group="food" class="nav-link text">Lunch</a>
-                        <a href="#" data-nav-group="food" class="nav-link text">Dinner</a>
+                        <a href="#" data-nav-group="food" class="nav-link text" data-bind="loadWizard: '@Url.Action("RecipeWizard", "Home")'">Breakfast</a>
+                        <a href="#" data-nav-group="food" class="nav-link text" data-bind="loadWizard: '@Url.Action("RecipeWizard", "Home")'">Lunch</a>
+                        <a href="#" data-nav-group="food" class="nav-link text" data-bind="loadWizard: '@Url.Action("RecipeWizard", "Home")'">Dinner</a>
                            
                         <a href="#" data-nav-group="exercise" data-nav-target="add" class="nav-link back"></a>
                         <a href="#" data-nav-group="exercise"  class="nav-link text" data-bind="loadWizard: '@Url.Action("ExerciseWizard", "Home")'">Cardio</a>
-                        <a href="#" data-nav-group="exercise" class="nav-link text">Strength</a>
+                        <a href="#" data-nav-group="exercise" class="nav-link text" data-bind="loadWizard: '@Url.Action("ExerciseWizard", "Home")'">Strength</a>
                     </div>
                     <div data-bind="html: wizardContent"></div>
                 </div>

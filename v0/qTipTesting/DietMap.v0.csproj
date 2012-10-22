@@ -300,6 +300,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\knockout.customBindings.js" />
     <Content Include="Views\Home\_ExerciseWizard.cshtml" />
+    <Content Include="Views\Home\_RecipeWizard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
