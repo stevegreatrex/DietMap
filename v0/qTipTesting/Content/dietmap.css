@@ -13,10 +13,10 @@
   cursor: pointer;
 }
 .timeslot:hover {
-  background: #a3a3a3;
+  background: #ddd;
 }
 .timeslot.active {
-  background: #888888;
+  background: #dddddd;
 }
 .timeslot > .timeslot-popup-content {
   display: none;
@@ -32,15 +32,21 @@
   padding: 10px;
   display: block;
 }
+.nav-menu-link {
+  float: left;
+  background: #ddd;
+}
 .nav-link {
   height: 32px;
   font-size: 16px;
   display: inline-block;
-  background: #ddd;
   margin: 0 2px;
-  float: left;
 }
 .nav-link-image {
+  height: 32px;
+  font-size: 16px;
+  display: inline-block;
+  margin: 0 2px;
   width: 32px;
   background-position: center;
   -moz-background-size: 24px;
@@ -49,7 +55,11 @@
   background-size: 24px;
   background-repeat: no-repeat;
 }
-.nav-link.back {
+.back {
+  height: 32px;
+  font-size: 16px;
+  display: inline-block;
+  margin: 0 2px;
   width: 32px;
   background-position: center;
   -moz-background-size: 24px;
@@ -59,7 +69,11 @@
   background-repeat: no-repeat;
   background-image: url('images/back.png');
 }
-.nav-link.add {
+.add {
+  height: 32px;
+  font-size: 16px;
+  display: inline-block;
+  margin: 0 2px;
   width: 32px;
   background-position: center;
   -moz-background-size: 24px;
@@ -69,7 +83,11 @@
   background-repeat: no-repeat;
   background-image: url('images/plus.png');
 }
-.nav-link.food {
+.food {
+  height: 32px;
+  font-size: 16px;
+  display: inline-block;
+  margin: 0 2px;
   width: 32px;
   background-position: center;
   -moz-background-size: 24px;
@@ -79,7 +97,11 @@
   background-repeat: no-repeat;
   background-image: url('images/knifefork.png');
 }
-.nav-link.weight {
+.weight {
+  height: 32px;
+  font-size: 16px;
+  display: inline-block;
+  margin: 0 2px;
   width: 32px;
   background-position: center;
   -moz-background-size: 24px;
@@ -89,7 +111,7 @@
   background-repeat: no-repeat;
   background-image: url('images/weight.png');
 }
-.nav-link.text {
+.text {
   color: #222;
   text-decoration: none;
   line-height: 32px;
@@ -103,6 +125,28 @@
   color: #999;
   text-align: center;
   display: block;
-  padding: 10px 10px 20px 10px;
+  padding: 10px;
   font-size: 10pt;
+}
+.record-detail-list {
+  display: block;
+}
+.record-detail-list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.record-detail-list li {
+  display: block;
+}
+.actions {
+  display: block;
+}
+.record-name {
+  font-size: 12pt;
+  padding-bottom: 5px;
+}
+.record-list {
+  display: inline-block;
+  text-align: center;
 }

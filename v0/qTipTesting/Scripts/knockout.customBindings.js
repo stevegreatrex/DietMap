@@ -43,6 +43,7 @@ ko.bindingHandlers.loadWizard = {
 		var value = ko.utils.unwrapObservable(valueAccessor());
 		$(element).click(function () {
 			viewModel.loadWizard(value);
+			return false;
 		});
 	}
 };

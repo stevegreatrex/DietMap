@@ -1,5 +1,5 @@
 ﻿@timeslot-background: #fff;
-@timeslot-active-background: #888;
+@timeslot-active-background: #ddd;
 
 .planner {
 	border-spacing: 2px;
@@ -19,7 +19,7 @@
 }
 
 	.timeslot:hover {
-		background: (@timeslot-active-background *1.2);
+		background: #ddd;
 	}
 
 	.timeslot.active {
@@ -47,18 +47,22 @@
 	display: block;
 }
 
+.nav-menu-link {
+	float: left;
+	background: #ddd;
+}
+
 .nav-link
 {
 	height: 32px;
 	font-size: 16px;
 	display: inline-block;
-	background: #ddd;
 	margin: 0 2px;
-	float: left;
 }
 	
 	.nav-link-image
 	{
+		.nav-link;
 		width: 32px;
 		background-position: center;
 		-moz-background-size: 24px;
@@ -68,27 +72,27 @@
 		background-repeat: no-repeat;
 	}
 
-	.nav-link.back {
+	.back {
 		.nav-link-image;
 		background-image: url('images/back.png');
 	}
 
-	.nav-link.add {
+	.add {
 		.nav-link-image;
 		background-image: url('images/plus.png');
 	}
 
-	.nav-link.food {
+	.food {
 		.nav-link-image;
 		background-image: url('images/knifefork.png');
 	}
 
-	.nav-link.weight {
+	.weight {
 		.nav-link-image;
 		background-image: url('images/weight.png');
 	}
 
-	.nav-link.text{
+	.text{
 		color: #222;
 		text-decoration: none;
 		line-height: 32px;
@@ -104,6 +108,35 @@
 	color: #999;
 	text-align: center;
 	display: block;
-	padding: 10px 10px 20px 10px;
+	padding: 10px;
 	font-size: 10pt;
+}
+
+.record-detail-list {
+	display: block;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	li {
+		display: block;
+	}
+
+}
+
+.actions {
+	display: block;
+}
+
+.record-name {
+	font-size: 12pt;
+	padding-bottom: 5px;
+}
+
+.record-list {
+	display:inline-block;
+	text-align: center;
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<qTipTesting.Models.Record>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -21,26 +22,34 @@
             <!-- ko foreach: timeslots -->
             <td class="timeslot" data-bind="click: $root.select, tipOnClick: { content: '.timeslot-popup-content', title: title, onhide: $root.removeSelection }, css: { active: $root.selectedTimeslot() === $data }">
                 <div class="timeslot-popup-content">
-                    <div>
-                        <span class="empty-list-message">Nothing planned yet</span>
+                    <div class="record-detail-list">
+                        <span class="empty-list-message" data-bind="visible: !records() || !records().length">Nothing planned yet</span>
+                        <div data-bind="foreach: records">
+                            <i data-bind="attr: { class: Type, title: Name }"></i>
+                            <span data-bind="text: Name" class="record-name"></span>
+                        </div>
                     </div>
+                    <hr />
                     <div class="actions" data-bind="progressiveNav: true">
-                        <a href="#" data-nav-group="top" data-nav-target="add" class="nav-link add"></a>
+                        <a href="#" data-nav-group="top" data-nav-target="add" class="nav-link nav-menu-link add"></a>
                            
-                        <a href="#" data-nav-group="add" data-nav-target="top" class="nav-link back"></a>
-                        <a href="#" data-nav-group="add" data-nav-target="food" class="nav-link food"></a>
-                        <a href="#" data-nav-group="add" data-nav-target="exercise" class="nav-link weight"></a>
+                        <a href="#" data-nav-group="add" data-nav-target="top" class="nav-link nav-menu-link back"></a>
+                        <a href="#" data-nav-group="add" data-nav-target="food" class="nav-link nav-menu-link food"></a>
+                        <a href="#" data-nav-group="add" data-nav-target="exercise" class="nav-link nav-menu-link weight"></a>
                            
-                        <a href="#" data-nav-group="food" data-nav-target="add" class="nav-link back"></a>
+                        <a href="#" data-nav-group="food" data-nav-target="add" class="nav-link nav-menu-link back"></a>
                         <a href="#" data-nav-group="food" class="nav-link text" data-bind="loadWizard: '@Url.Action("RecipeWizard", "Home")'">Breakfast</a>
                         <a href="#" data-nav-group="food" class="nav-link text" data-bind="loadWizard: '@Url.Action("RecipeWizard", "Home")'">Lunch</a>
                         <a href="#" data-nav-group="food" class="nav-link text" data-bind="loadWizard: '@Url.Action("RecipeWizard", "Home")'">Dinner</a>
                            
-                        <a href="#" data-nav-group="exercise" data-nav-target="add" class="nav-link back"></a>
-                        <a href="#" data-nav-group="exercise"  class="nav-link text" data-bind="loadWizard: '@Url.Action("ExerciseWizard", "Home")'">Cardio</a>
-                        <a href="#" data-nav-group="exercise" class="nav-link text" data-bind="loadWizard: '@Url.Action("ExerciseWizard", "Home")'">Strength</a>
+                        <a href="#" data-nav-group="exercise" data-nav-target="add" class="nav-link nav-menu-link back"></a>
+                        <a href="#" data-nav-group="exercise"  class="nav-link nav-menu-link text" data-bind="loadWizard: '@Url.Action("ExerciseWizard", "Home")'">Cardio</a>
+                        <a href="#" data-nav-group="exercise" class="nav-link nav-menu-link text" data-bind="loadWizard: '@Url.Action("ExerciseWizard", "Home")'">Strength</a>
                     </div>
                     <div data-bind="html: wizardContent"></div>
+                </div>
+                <div class="record-list" data-bind="foreach: records">
+                    <div data-bind="attr: { class: Type, title: Name }"></div>
                 </div>
             </td>
             <!-- /ko -->
@@ -56,7 +65,8 @@
     @Scripts.Render("~/bundles/viewmodel")
     <script>
         $(function () {
-            var viewModel = new DietMap();
+            var data = @(Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))),
+                viewModel = new DietMap(data);
             ko.applyBindings(viewModel);
         });
     </script>
