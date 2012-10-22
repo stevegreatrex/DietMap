@@ -13,10 +13,10 @@
   cursor: pointer;
 }
 .timeslot:hover {
-  background: #ffc600;
+  background: #a3a3a3;
 }
 .timeslot.active {
-  background: #ffa500;
+  background: #888888;
 }
 .timeslot > .timeslot-popup-content {
   display: none;
