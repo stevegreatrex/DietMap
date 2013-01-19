@@ -38,15 +38,31 @@
                         <a href="#" data-nav-group="add" data-nav-target="exercise" class="nav-link nav-menu-link weight"></a>
                            
                         <a href="#" data-nav-group="food" data-nav-target="add" class="nav-link nav-menu-link back"></a>
-                        <a href="#" data-nav-group="food" class="nav-link text" data-bind="loadWizard: '@Url.Action("RecipeWizard", "Home")'">Breakfast</a>
-                        <a href="#" data-nav-group="food" class="nav-link text" data-bind="loadWizard: '@Url.Action("RecipeWizard", "Home")'">Lunch</a>
-                        <a href="#" data-nav-group="food" class="nav-link text" data-bind="loadWizard: '@Url.Action("RecipeWizard", "Home")'">Dinner</a>
+                        <a href="#" data-nav-group="food" class="nav-link text" data-bind="loadWizard: '@Url.Action("Recipes", "Home")'">Breakfast</a>
+                        <a href="#" data-nav-group="food" class="nav-link text" data-bind="loadWizard: '@Url.Action("Recipes", "Home")'">Lunch</a>
+                        <a href="#" data-nav-group="food" class="nav-link text" data-bind="loadWizard: '@Url.Action("Recipes", "Home")'">Dinner</a>
                            
                         <a href="#" data-nav-group="exercise" data-nav-target="add" class="nav-link nav-menu-link back"></a>
                         <a href="#" data-nav-group="exercise"  class="nav-link nav-menu-link text" data-bind="loadWizard: '@Url.Action("ExerciseWizard", "Home")'">Cardio</a>
                         <a href="#" data-nav-group="exercise" class="nav-link nav-menu-link text" data-bind="loadWizard: '@Url.Action("ExerciseWizard", "Home")'">Strength</a>
                     </div>
-                    <div data-bind="html: wizardContent"></div>
+                    <!--<div data-bind="html: wizardContent"></div>-->
+                    <table data-bind="visible: availableRecipes().length">
+                        <thead>
+                            <tr>
+                                <th>Meal</th>
+                                <th>Calories</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: availableRecipes">
+                            <tr>
+                                <td>
+                                    <a href="#" data-bind="text: Name, click: $parent.addRecipe"></a>
+                                </td>
+                                <td data-bind="text: Calories"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="record-list" data-bind="foreach: records">
                     <div data-bind="attr: { class: Type, title: Name }"></div>

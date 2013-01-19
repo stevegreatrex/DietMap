@@ -10,17 +10,32 @@ var DietMap = (function ($, ko, moment, undefined) {
 		}, this);
 	};
 
-	var TimeSlot = function (day, time, data) {
+	var TimeSlot = function (moment, day, time, data) {
 		var self = this;
 		this.day = ko.observable(day);
 		this.time = ko.observable(time);
 		this.wizardContent = ko.observable();
-		this.records = ko.observableArray(data);
+		this.records = ko.observableArray(data || []);
+        this.availableRecipes = ko.observableArray();
 
 		this.loadWizard = function (url) {
 			$.get(url).done(function (data) {
-				self.wizardContent(data);
+			    //self.wizardContent(data);
+                self.availableRecipes.removeAll();
+			    for (var i = 0; i < data.length; i++) {
+                    self.availableRecipes.push(data[i]);
+			    }
 			});
+		};
+
+		this.addRecipe = function (recipe) {
+		    //tell the server, wait for confirmation, then...
+		    $.post("/home/addrecipe", {
+		        name: recipe.Name,
+                date: moment.format("YYYY-MM-DD")
+		    }).done(function (data) {
+                self.records.push(data);
+		    });
 		};
 
 		TimeBase.apply(this);
@@ -33,7 +48,7 @@ var DietMap = (function ($, ko, moment, undefined) {
 	var TimeSlotRow = function(time, data) {
 		this.timeslots = ko.observableArray();
 		this.time = ko.observable(time);
-
+        
 		TimeBase.apply(this);
 		this.init(data);
 	};
@@ -49,13 +64,16 @@ var DietMap = (function ($, ko, moment, undefined) {
 				dataByDay[day].push(data[i]);
 			}
 		}
-		this.timeslots.push(new TimeSlot("Mon", this.time(), dataByDay[0]));
-		this.timeslots.push(new TimeSlot("Tue", this.time(), dataByDay[1]));
-		this.timeslots.push(new TimeSlot("Wed", this.time(), dataByDay[2]));
-		this.timeslots.push(new TimeSlot("Thu", this.time(), dataByDay[3]));
-		this.timeslots.push(new TimeSlot("Fri", this.time(), dataByDay[4]));
-		this.timeslots.push(new TimeSlot("Sat", this.time(), dataByDay[5]));
-		this.timeslots.push(new TimeSlot("Sun", this.time(), dataByDay[6]));
+
+        var today = moment();
+
+		this.timeslots.push(new TimeSlot(today, "Mon", this.time(), dataByDay[0]));
+		this.timeslots.push(new TimeSlot(today, "Tue", this.time(), dataByDay[1]));
+		this.timeslots.push(new TimeSlot(today, "Wed", this.time(), dataByDay[2]));
+		this.timeslots.push(new TimeSlot(today, "Thu", this.time(), dataByDay[3]));
+		this.timeslots.push(new TimeSlot(today, "Fri", this.time(), dataByDay[4]));
+		this.timeslots.push(new TimeSlot(today, "Sat", this.time(), dataByDay[5]));
+		this.timeslots.push(new TimeSlot(today, "Sun", this.time(), dataByDay[6]));
 	};
 
 	var DietMap = function (data) {
@@ -74,7 +92,8 @@ var DietMap = (function ($, ko, moment, undefined) {
 					dataByTime[hour].push(data[i]);
 				}
 			}
-			for (var hour = 6; hour < 24; hour++) {
+
+            for (var hour = 6; hour < 24; hour++) {
 				self.timeslotRows.push(new TimeSlotRow(hour, dataByTime[hour]));
 			}
 		};
@@ -87,8 +106,8 @@ var DietMap = (function ($, ko, moment, undefined) {
 			}
 		};
 
-        this.init();
+		this.init();
 	};
 
-    return DietMap;
+	return DietMap;
 }(jQuery, ko, moment));

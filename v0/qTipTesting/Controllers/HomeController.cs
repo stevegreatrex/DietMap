@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using qTipTesting.Models;
@@ -35,7 +36,29 @@ namespace DietMap.v0.Controllers
 			return PartialView("_ExerciseWizard");
 		}
 
-		public ActionResult RecipeWizard()
+		public ActionResult Recipes()
+		{
+			return Json(new List<dynamic> { new {
+				Name = "Fish Fingers",
+				Calories = 500
+			}, new {
+				Name = "KFC",
+				Calories = 1000000
+			} }, JsonRequestBehavior.AllowGet);
+		}
+
+		[HttpPost]
+		public ActionResult AddRecipe(string name, string date)
+		{
+			//save that recipe
+			return Json(new Record {
+				Date = DateTime.Parse(date),
+				Type = "food",
+				Name = name
+			});
+		}
+
+		public ActionResult RecipeWizard(string type)
 		{
 			return PartialView("_RecipeWizard");
 		}
